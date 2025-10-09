@@ -2,12 +2,12 @@
   "name": "lection3",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "homework.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --respawn src/index.ts",
+    "dev": "ts-node-dev --respawn src/homework.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/homework.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +15,8 @@
     "@types/node": "^24.7.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "zod": "^4.1.12"
   }
 }
