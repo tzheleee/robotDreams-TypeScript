@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "title": "Prepare presentation for client",
+    "description": "Create slides with key project results and data visualizations."
+  },
+  {
+    "id": 2,
+    "title": "Update API documentation"
+  },
+  {
+    "id": 3,
+    "title": "Test authentication module",
+    "description": "Check login, registration, password recovery, and two-factor authentication.",
+    "createdAt": "Tue Sep 30 2025",
+    "status": "in_progress",
+    "priority": "high",
+    "deadline": "Sun Oct 12 2025"
+  },
+  {
+    "id": 4,
+    "title": "Prepare September expense report",
+    "description": "Collect all financial data, create a table, and generate a PDF report.",
+    "createdAt": "Wed Oct 01 2025",
+    "status": "todo",
+    "priority": "low",
+    "deadline": "Mon Oct 13 2025"
+  },
+  {
+    "id": 5,
+    "title": "Create user profile page",
+    "description": "Implement the frontend part of the profile with data editing capabilities.",
+    "createdAt": "Thu Oct 02 2025",
+    "status": "in_progress",
+    "priority": "medium",
+    "deadline": "Fri Oct 03 2025"
+  },
+  {
+    "id": 6,
+    "title": "Code review new pull request",
+    "description": "Review changes in the repository and leave comments.",
+    "createdAt": "Sat Oct 04 2025",
+    "status": "done",
+    "priority": "medium",
+    "deadline": "Tue Oct 14 2025"
+  },
+  {
+    "id": 7,
+    "title": "Optimize database queries",
+    "description": "Reduce API response time by optimizing SQL queries.",
+    "createdAt": "Sun Oct 05 2025",
+    "status": "in_progress",
+    "priority": "high",
+    "deadline": "Wed Oct 15 2025"
+  },
+  {
+    "id": 8,
+    "title": "Add dark theme to interface",
+    "description": "Implement a theme toggle and test styles in both modes.",
+    "createdAt": "Thu Oct 09 2025",
+    "status": "todo",
+    "priority": "low",
+    "deadline": "Thu Oct 16 2025"
+  },
+  {
+    "id": 9,
+    "title": "Conduct team meeting",
+    "description": "Discuss progress, issues, and plans for the next week.",
+    "createdAt": "Fri Oct 10 2025",
+    "status": "done",
+    "priority": "medium",
+    "deadline": "Fri Oct 17 2025"
+  },
+  {
+    "id": 10,
+    "title": "Develop testing plan for new release",
+    "description": "Compile a list of test scenarios and assign responsible persons.",
+    "createdAt": "Sat Oct 11 2025",
+    "status": "todo",
+    "priority": "high",
+    "deadline": "Sat Oct 18 2025'"
+  }
+]
