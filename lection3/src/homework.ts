@@ -1,12 +1,11 @@
 //  TO DO:
-// filter Date
 // update task
-// deadline check(if finished)
 
 import tasks from '../tasks.json' 
 import {z} from 'zod'
 import {DEF_CREATED_AT, DEF_DEADLINE, DEF_DESCRIPTION, DEF_PRIORITY, DEF_STATUS, deadlineDate} from './constants'
 import { Status,Priority, Task } from './types'
+const prompt = require("prompt-sync")();
 
 const tasksValidation = z.object({
     id: z.union([z.string(), z.number()]),
@@ -65,17 +64,51 @@ function filterTasksByPriority(priority: Priority){
     return result!.filter(tasks => tasks.priority === priority)
 }
 
+function filterTaskByDate(){
+    const input = prompt('Which date you want to find?(yyyy-mm-dd) - ')!.trim()
+    const filterDate = new Date(input)
+    if (!input || isNaN(filterDate.getTime())){
+        console.log("Incorrect Input!")
+    }
+    const targetDate = filterDate.toDateString();
 
-getTaskDetails(1)
+    const filtered = result!.filter(task => {
+        const taskDate = new Date(task.createdAt).toDateString();
+        return taskDate === targetDate;
+    });
 
-console.log(createNewTask({}))
+    console.log(`Found ${filtered.length} tasks for ${targetDate}`);
+    return filtered;
+}
 
-console.log('Before delete - ',result)
-removeTask(2)
-console.log('After delete- ', result)
+function checkDeadlineDate(){
+    const deadlineDate = new Date()
+    deadlineDate.setHours(23, 59, 59)
+    const filteredDeadline = result.filter(tasks => 
+        tasks.deadline && (tasks.status === 'todo' || tasks.status === 'in_progress') && (new Date(tasks.deadline) <= deadlineDate))
+    if (filteredDeadline.length === 0 ){
+        console.log('Congrats, You finished all your tasks!')
+    } else {
+        console.log(`You have ${filteredDeadline.length} unfinished tasks!`)
+    }
+    return filteredDeadline
+}
 
-console.log('Filter Status TODO :', filterTasksByStatus('todo'))
-console.log('Filter Priority LOW :', filterTasksByPriority('low'))
+function updateTask(){
+    
+}
+
+// getTaskDetails(1)
+// console.log(createNewTask({}))
+
+// console.log('Before delete - ',result)
+// removeTask(2)
+// console.log('After delete- ', result)
+
+// console.log('Filter Status TODO :', filterTasksByStatus('todo'))
+// console.log('Filter Priority LOW :', filterTasksByPriority('low'))
+//filterTaskByDate()
+//checkDeadlineDate()
 
 
 

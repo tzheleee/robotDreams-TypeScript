@@ -1,4 +1,4 @@
-export type Status = 'todo' | 'inProgres' | 'done'
+export type Status = 'todo' | 'in_progres' | 'done'
 export type Priority = 'low' | 'medium' | 'high'
 
 export type Task= {
