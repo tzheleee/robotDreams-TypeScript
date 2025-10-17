@@ -1,14 +1,12 @@
-import  { TaskDefault, Status, Priority, Levels, Roles, TaskType}from "../../types"
-import { DEF_DESCRIPTION, DEF_CREATED_AT, DEF_STATUS, DEF_PRIORITY, DEF_DEADLINE } from '../../constants'
-import { z } from 'zod'
-import tasks from '../../../tasks.json' 
+import  { TaskDefault, Status, Priority, Levels, Roles, TaskType}from "./types"
+import { DEF_DESCRIPTION, DEF_CREATED_AT, DEF_STATUS, DEF_PRIORITY, DEF_DEADLINE, DEF_TITLE } from './constants'
 
 
 
 export class Task implements TaskDefault{
     typeOfTask: TaskType
     id: number
-    title: string
+    title?: string
     description?: string
     createdAt?: string | Date
     status?: Status
@@ -19,7 +17,7 @@ export class Task implements TaskDefault{
                 status, priority, deadline}: TaskDefault){
         this.typeOfTask = typeOfTask
         this.id = id
-        this. title = title
+        this.title = title ?? DEF_TITLE
         this.description = description ?? DEF_DESCRIPTION
         this.createdAt = createdAt ?? DEF_CREATED_AT
         this.status = status ?? DEF_STATUS
@@ -32,21 +30,6 @@ export class Task implements TaskDefault{
             STATUS: ${this.status}\n PRIORITY: ${this.priority}\n DEADLINE: ${this.deadline}`)
     }
 
-    validate(){
-        const tasksValidation = z.object({
-            typeOfTask: z.string(),
-            id: z.number(),
-            title: z.string(),
-            description: z.string().optional().default(DEF_DESCRIPTION),
-            createdAt: z.string().optional().default(DEF_CREATED_AT),
-            status: z.string().optional().default(DEF_STATUS),
-            priority: z.string().optional().default(DEF_PRIORITY),
-            deadline: z.union([z.string(), z.date()]).optional().default(DEF_DEADLINE)
-        })
-        let validatedArray = z.array(tasksValidation)
-        let result = validatedArray.safeParse(tasks).data ?? []
-        console.log(result)
-    }
 }
 
 export class Subtask extends Task{
@@ -125,8 +108,4 @@ export class Epic extends Task{
         super.getTaskInfo()
         console.log(`Summary: ${this.summary}\nProgress: ${this.progress}%\nTasks in epic: ${this.tasksInEpic.length}`)
     }
-}
-
-export class GeneralTask{
-
 }

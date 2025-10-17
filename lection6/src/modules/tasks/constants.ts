@@ -1,6 +1,7 @@
 import {Status, Priority} from './types'
 
 
+export const DEF_TITLE: string = 'New Task'
 export const DEF_DESCRIPTION: string = '---'
 export const DEF_CREATED_AT: string = new Date().toDateString()
 export const DEF_STATUS: Status = 'todo'

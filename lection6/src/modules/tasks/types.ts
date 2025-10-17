@@ -8,7 +8,7 @@ export type TaskType = 'task' | 'subtask' | 'bug' | 'story' | 'epic'
 export type TaskDefault= {
     typeOfTask: TaskType
     id: number
-    title: string
+    title?: string
     description?: string
     createdAt?: string | Date
     status?: Status
