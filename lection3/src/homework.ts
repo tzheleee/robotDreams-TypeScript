@@ -8,7 +8,7 @@ import { Status,Priority, Task } from './types'
 const prompt = require("prompt-sync")();
 
 const tasksValidation = z.object({
-    id: z.union([z.string(), z.number()]),
+    id: z.number(),
     title: z.string(),
     description: z.string().optional().default(DEF_DESCRIPTION),
     createdAt: z.string().optional().default(DEF_CREATED_AT),
@@ -22,8 +22,8 @@ let validatedArray = z.array(tasksValidation)
 let result = validatedArray.safeParse(tasks).data ?? []
 //console.log(result)
 
-function getTaskDetails(taskId: string | number){
-    let ifTaskExist = result?.find(t => t.id === taskId)
+function getTaskDetails(taskId: number){
+    let ifTaskExist = result.find(t => t.id === taskId)
     if (ifTaskExist){
         console.log(ifTaskExist)
     }else {
@@ -33,7 +33,7 @@ function getTaskDetails(taskId: string | number){
 
 function createNewTask(taskData: Partial<Task> = {}){                               // <--
     const newTask = {
-        id: result!.length + 1,
+        id: result.length + 1,
         title: taskData.title ?? `New Task ${taskData.id}`,
         description: taskData.description ?? DEF_DESCRIPTION,
         createdAt: DEF_CREATED_AT,
@@ -47,7 +47,7 @@ function createNewTask(taskData: Partial<Task> = {}){                           
 }
 
 function removeTask(taskId: string | number){
-    const index = result!.findIndex(i => i.id === taskId)
+    const index = result.findIndex(i => i.id === taskId)
     if (index === -1){
         console.log(`Task with Id ${index} not found`)
     }else{
@@ -57,11 +57,11 @@ function removeTask(taskId: string | number){
 }
 
 function filterTasksByStatus(status: Status){
-    return result!.filter(tasks => tasks.status === status)
+    return result.filter(tasks => tasks.status === status)
 }
 
 function filterTasksByPriority(priority: Priority){
-    return result!.filter(tasks => tasks.priority === priority)
+    return result.filter(tasks => tasks.priority === priority)
 }
 
 function filterTaskByDate(){
@@ -72,7 +72,7 @@ function filterTaskByDate(){
     }
     const targetDate = filterDate.toDateString();
 
-    const filtered = result!.filter(task => {
+    const filtered = result.filter(task => {
         const taskDate = new Date(task.createdAt).toDateString();
         return taskDate === targetDate;
     });
@@ -94,9 +94,9 @@ function checkDeadlineDate(){
     return filteredDeadline
 }
 
-function updateTask(){
-    
-}
+// function updateTask(){
+
+// }
 
 // getTaskDetails(1)
 // console.log(createNewTask({}))
@@ -112,19 +112,6 @@ function updateTask(){
 
 
 
-// - - - - - - -- - - - - - - - - - - - - -  - - - - -- -- 
-
-
-//          TO DO!!!
-// function filterTasksByDate(createdAt?: string | number){
-//     const filterDate = new Date(createdAt).toDateString();
-
-//     return result!.filter(task => {
-//         const taskDate = new Date(task.createdAt!).toDateString();
-//         return taskDate === filterDate;
-//     });
-// }
-//console.log(filterTasksByDate("Fri Oct 10 2025"))
 
 
 

@@ -1,0 +1,17 @@
+{
+  "name": "lection5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "practical.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn src/practical.ts",
+    "build": "tsc",
+    "start": "node dist/practical.js"  },
+  "author": "hrybach",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.8.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "lection6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "dev": "ts-node-dev --respawn src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"  
+  },
+  "author": "hrybach",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.8.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0",
+    "zod": "^4.1.12"
+  }
+}
