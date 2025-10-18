@@ -1,6 +1,6 @@
 [
   {
-    "type": "task",
+    "typeOfTask": "task",
     "id": 1,
     "title": "Develop database architecture",
     "description": "Design database schema for users and tasks",
@@ -10,7 +10,7 @@
     "deadline": "Fri Oct 10 2025"
   },
   {
-    "type": "task",
+    "typeOfTask": "task",
     "id": 2,
     "title": "Write API tests",
     "description": "Create unit and integration tests for all endpoints",
@@ -20,7 +20,7 @@
     "deadline": "Mon Oct 13 2025"
   },
   {
-    "type": "task",
+    "typeOfTask": "task",
     "id": 3,
     "title": "Test authentication module",
     "description": "Check login, registration, password recovery, and two-factor authentication",
@@ -30,7 +30,7 @@
     "deadline": "Sun Oct 12 2025"
   },
   {
-    "type": "task",
+    "typeOfTask": "task",
     "id": 4,
     "title": "Prepare September expense report",
     "description": "Collect all financial data, create a table, and generate a PDF report",
@@ -40,7 +40,7 @@
     "deadline": "Mon Oct 13 2025"
   },
   {
-    "type": "task",
+    "typeOfTask": "task",
     "id": 5,
     "title": "Create user profile page",
     "description": "Implement the frontend part of the profile with data editing capabilities",
@@ -50,7 +50,7 @@
     "deadline": "Fri Oct 03 2025"
   },
   {
-    "type": "subtask",
+    "typeOfTask": "subtask",
     "id": 6,
     "title": "Design login form UI",
     "description": "Create responsive login form design",
@@ -63,7 +63,7 @@
     "isDone": true
   },
   {
-    "type": "subtask",
+    "typeOfTask": "subtask",
     "id": 7,
     "title": "Add password strength meter",
     "description": "Implement password validation visual feedback",
@@ -76,7 +76,7 @@
     "isDone": false
   },
   {
-    "type": "bug",
+    "typeOfTask": "bug",
     "id": 8,
     "title": "Login button not working on mobile",
     "description": "Login button fails to respond on iOS Safari",
@@ -89,7 +89,7 @@
     "stepsToReproduce": "1. Open app on iOS Safari\n2. Enter credentials\n3. Tap login button\n4. Nothing happens"
   },
   {
-    "type": "bug",
+    "typeOfTask": "bug",
     "id": 9,
     "title": "Memory leak in dashboard",
     "description": "Dashboard component not cleaning up event listeners",
@@ -102,7 +102,7 @@
     "stepsToReproduce": "1. Navigate to dashboard\n2. Navigate away\n3. Return to dashboard multiple times\n4. Observe memory usage growth"
   },
   {
-    "type": "story",
+    "typeOfTask": "story",
     "id": 10,
     "title": "User password reset functionality",
     "description": "Allow users to reset forgotten passwords",
@@ -114,7 +114,7 @@
     "acceptanceCriteria": "User can request password reset via email, receives reset link, can set new password, and gets confirmation email"
   },
   {
-    "type": "story",
+    "typeOfTask": "story",
     "id": 11,
     "title": "Admin user management dashboard",
     "description": "Create admin interface for user management",
@@ -126,7 +126,7 @@
     "acceptanceCriteria": "Admin can view all users, filter by status, edit user roles, and deactivate accounts with confirmation"
   },
   {
-    "type": "epic",
+    "typeOfTask": "epic",
     "id": 12,
     "title": "User authentication system",
     "description": "Complete authentication and authorization system",
@@ -139,7 +139,7 @@
     "summary": "Implementation of secure authentication system with login, registration, password reset, and 2FA"
   },
   {
-    "type": "epic",
+    "typeOfTask": "epic",
     "id": 13,
     "title": "Admin panel development",
     "description": "Create comprehensive admin interface",

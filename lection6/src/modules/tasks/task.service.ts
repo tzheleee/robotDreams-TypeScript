@@ -7,8 +7,27 @@ import { DEF_CREATED_AT, DEF_DEADLINE, DEF_DESCRIPTION, DEF_PRIORITY, DEF_STATUS
 export class TaskService{
     private tasksMassive: Task[] = []
 
-    private validation(data: Partial<TaskDefault>): TaskDefault{
+    private validation(data: Partial<TaskDefault>): TaskDefault {
         const tasksValidation = z.object({
+            typeOfTask: z.string(),
+            id: z.number().optional(),
+            title: z.string().default(DEF_TITLE),
+            description: z.string().optional().default(DEF_DESCRIPTION),
+            createdAt: z.string().optional().default(DEF_CREATED_AT),
+            status: z.string().optional().default(DEF_STATUS),
+            priority: z.string().optional().default(DEF_PRIORITY),
+            deadline: z.union([z.string(), z.date()]).optional().default(DEF_DEADLINE)
+        })
+
+        const result = tasksValidation.safeParse(data)  
+        if (!result.success) {
+            throw new Error(result.error.message)
+        }
+        return result.data as TaskDefault
+    }
+
+    private validationArray(data: any[]): TaskDefault[] {
+        const taskSchema = z.object({
             typeOfTask: z.string(),
             id: z.number(),
             title: z.string().default(DEF_TITLE),
@@ -19,20 +38,31 @@ export class TaskService{
             deadline: z.union([z.string(), z.date()]).optional().default(DEF_DEADLINE)
         })
 
-        const validatedResult = z.array(tasksValidation)
-        let result = validatedResult.safeParse(data).data ?? []
-        console.log(result)
-        // const result = tasksValidation.safeParse(data)
-        // if (!result.success) {
-        //     throw new Error(result.error.message)
-        // }
-        // return result.data as TaskDefault
+        const result = z.array(taskSchema).safeParse(data)  
+        if (!result.success) {
+            throw new Error(result.error.message)
+        }
+        return result.data as TaskDefault[]
+    }
+    
+    public loadTasksFromJSON(): void {
+        // console.log('First task in JSON:', data[0]); 
+        const validatedData = this.validationArray(data)
+
+        validatedData.forEach((taskData: TaskDefault) => {
+            const task = new Task(taskData)
+            this.tasksMassive.push(task)
+        })
+        // console.log('JSON structure:', data[0]);
+
+        console.log(`Succesfully loaded ${this.tasksMassive.length} tasks from JSON`)
     }
 
     isTaskExist(taskId: number){
         const taskExist = this.tasksMassive.find(t => t.id === taskId)
         if (taskExist){
-            console.log(taskExist)
+            console.log(`Here is Task ${taskId}`)
+            taskExist.getTaskInfo()
         }else {
             console.log(`Task ${taskId} doesnt exist!`)
         }
@@ -42,7 +72,7 @@ export class TaskService{
         return this.tasksMassive
     }
 
-    addTask(taskData: Partial<Task> = {}){
+    addTask(taskData: Partial<TaskDefault> = {}){
         const validatedData = this.validation(taskData);
 
         const newTask = new Task({
@@ -56,9 +86,9 @@ export class TaskService{
             deadline: validatedData.deadline ?? DEF_DEADLINE
         })
         
-    this.tasksMassive.push(newTask)
-    console.log(`  NEW TASK - ${newTask.title} was added!`)
-    return newTask
+        this.tasksMassive.push(newTask)
+        console.log(`  NEW TASK - ${newTask.title} was added!`)
+        return newTask
     }
 }
 
