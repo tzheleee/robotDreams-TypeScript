@@ -1,15 +1,16 @@
 import { TaskDefault, TaskType, Status, Priority } from './types';
 import { Task, Subtask, Bug, Story, Epic } from './task.types';
 import { z } from 'zod';
-import data from '../../../tasks.json'
 import { DEF_CREATED_AT, DEF_DEADLINE, DEF_DESCRIPTION, DEF_PRIORITY, DEF_STATUS, DEF_TITLE } from './constants';
+import fs from 'fs';
+import path from 'path';
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
 
 export class TaskService{
     private tasksMassive: Task[] = []
 
-    private validation(data: Partial<TaskDefault>): TaskDefault {
+    private validation(data: Partial<TaskDefault> | any ): TaskDefault | TaskDefault[] {
         const tasksValidation = z.object({
             typeOfTask: z.string(),
             id: z.number().optional(),
@@ -20,44 +21,70 @@ export class TaskService{
             priority: z.string().optional().default(DEF_PRIORITY),
             deadline: z.union([z.string(), z.date()]).optional().default(DEF_DEADLINE)
         })
-
-        const result = tasksValidation.safeParse(data)  
-        if (!result.success) {
-            throw new Error(result.error.message)
+        if(Array.isArray(data)){
+            const result = z.array(tasksValidation).safeParse(data)  
+            if (!result.success) {
+                throw new Error(result.error.message)
+            }
+            return result.data as TaskDefault[]
+        } else {
+            const result = tasksValidation.safeParse(data)  
+            if (!result.success) {
+                throw new Error(result.error.message)
+            }
+            return result.data as TaskDefault
         }
-        return result.data as TaskDefault
     }
 
-    private validationArray(data: any[]): TaskDefault[] {
-        const taskSchema = z.object({
-            typeOfTask: z.string(),
-            id: z.number(),
-            title: z.string().default(DEF_TITLE),
-            description: z.string().optional().default(DEF_DESCRIPTION),
-            createdAt: z.string().optional().default(DEF_CREATED_AT),
-            status: z.string().optional().default(DEF_STATUS),
-            priority: z.string().optional().default(DEF_PRIORITY),
-            deadline: z.union([z.string(), z.date()]).optional().default(DEF_DEADLINE)
-        })
-
-        const result = z.array(taskSchema).safeParse(data)  
-        if (!result.success) {
-            throw new Error(result.error.message)
-        }
-        return result.data as TaskDefault[]
-    }
+    // private validationArray(data: any[]): TaskDefault[] {
+    //     const taskSchema = z.object({
+    //         typeOfTask: z.string(),
+    //         id: z.number(),
+    //         title: z.string().default(DEF_TITLE),
+    //         description: z.string().optional().default(DEF_DESCRIPTION),
+    //         createdAt: z.string().optional().default(DEF_CREATED_AT),
+    //         status: z.string().optional().default(DEF_STATUS),
+    //         priority: z.string().optional().default(DEF_PRIORITY),
+    //         deadline: z.union([z.string(), z.date()]).optional().default(DEF_DEADLINE)
+    //     })
+        
+    //     const result = z.array(taskSchema).safeParse(data)  
+    //     if (!result.success) {
+    //         throw new Error(result.error.message)
+    //     }
+    //     return result.data as TaskDefault[]
+    // }
     
     public loadTasksFromJSON(): void {
-        // console.log('First task in JSON:', data[0]); 
-        const validatedData = this.validationArray(data)
-
-        validatedData.forEach((taskData: TaskDefault) => {
+        const filePath = path.join(__dirname, '../../../tasks.json');
+        const rawData = fs.readFileSync(filePath, 'utf-8');
+        const data = JSON.parse(rawData);
+        
+        data.forEach((taskData: TaskDefault) => {
             const task = new Task(taskData)
             this.tasksMassive.push(task)
         })
-        // console.log('JSON structure:', data[0]);
 
         console.log(`Succesfully loaded ${this.tasksMassive.length} tasks from JSON`)
+    }
+
+    saveTasksToJSON(): void{
+        const addedToJSONTask = this.tasksMassive.map(task => ({
+            typeOfTask: task.typeOfTask ?? 'task',
+            id: task.id,
+            title: task.title ?? `${DEF_TITLE}${task.id}`,
+            description: task.description ?? DEF_DESCRIPTION,
+            createdAt: task.createdAt ?? DEF_CREATED_AT,
+            status: task.status ?? DEF_STATUS,
+            priority: task.priority ?? DEF_PRIORITY,
+            deadline: task.deadline ?? DEF_DEADLINE
+        }))
+
+        console.log(`Ready to save ${addedToJSONTask.length} tasks to JSON`);
+
+        const jsonString = JSON.stringify(addedToJSONTask, null, 2);
+        fs.writeFileSync('./tasks.json', jsonString);
+        console.log('Succesfully rewritten!')
     }
 
     isTaskExist(taskId: number){
@@ -75,7 +102,7 @@ export class TaskService{
     }
 
     addTask(taskData: Partial<TaskDefault> = {}){
-        const validatedData = this.validation(taskData);
+        const validatedData = this.validation(taskData) as TaskDefault
 
         const newTask = new Task({
             typeOfTask: validatedData.typeOfTask ?? 'task',

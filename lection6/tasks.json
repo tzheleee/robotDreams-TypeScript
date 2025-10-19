@@ -57,10 +57,7 @@
     "createdAt": "Thu Oct 02 2025",
     "status": "done",
     "priority": "medium",
-    "deadline": "Mon Oct 06 2025",
-    "parentId": 3,
-    "subtaskDescription": "Implement login form design with validation",
-    "isDone": true
+    "deadline": "Mon Oct 06 2025"
   },
   {
     "typeOfTask": "subtask",
@@ -70,10 +67,7 @@
     "createdAt": "Fri Oct 03 2025",
     "status": "in_progress",
     "priority": "low",
-    "deadline": "Wed Oct 08 2025",
-    "parentId": 3,
-    "subtaskDescription": "Create password strength indicator component",
-    "isDone": false
+    "deadline": "Wed Oct 08 2025"
   },
   {
     "typeOfTask": "bug",
@@ -83,10 +77,7 @@
     "createdAt": "Wed Oct 01 2025",
     "status": "todo",
     "priority": "high",
-    "deadline": "Fri Oct 03 2025",
-    "importanceLevel": "critical",
-    "bugDescription": "Login button click event not firing on touch devices",
-    "stepsToReproduce": "1. Open app on iOS Safari\n2. Enter credentials\n3. Tap login button\n4. Nothing happens"
+    "deadline": "Fri Oct 03 2025"
   },
   {
     "typeOfTask": "bug",
@@ -96,10 +87,7 @@
     "createdAt": "Thu Oct 02 2025",
     "status": "in_progress",
     "priority": "major",
-    "deadline": "Tue Oct 07 2025",
-    "importanceLevel": "major",
-    "bugDescription": "Memory consumption increases with each navigation to dashboard",
-    "stepsToReproduce": "1. Navigate to dashboard\n2. Navigate away\n3. Return to dashboard multiple times\n4. Observe memory usage growth"
+    "deadline": "Tue Oct 07 2025"
   },
   {
     "typeOfTask": "story",
@@ -109,9 +97,7 @@
     "createdAt": "Mon Sep 29 2025",
     "status": "done",
     "priority": "high",
-    "deadline": "Fri Oct 03 2025",
-    "userRole": "user",
-    "acceptanceCriteria": "User can request password reset via email, receives reset link, can set new password, and gets confirmation email"
+    "deadline": "Fri Oct 03 2025"
   },
   {
     "typeOfTask": "story",
@@ -121,9 +107,7 @@
     "createdAt": "Tue Sep 30 2025",
     "status": "in_progress",
     "priority": "medium",
-    "deadline": "Mon Oct 13 2025",
-    "userRole": "admin",
-    "acceptanceCriteria": "Admin can view all users, filter by status, edit user roles, and deactivate accounts with confirmation"
+    "deadline": "Mon Oct 13 2025"
   },
   {
     "typeOfTask": "epic",
@@ -133,10 +117,7 @@
     "createdAt": "Mon Sep 29 2025",
     "status": "in_progress",
     "priority": "high",
-    "deadline": "Mon Oct 13 2025",
-    "tasksInEpic": [3, 6, 7, 8, 10],
-    "progress": 65,
-    "summary": "Implementation of secure authentication system with login, registration, password reset, and 2FA"
+    "deadline": "Mon Oct 13 2025"
   },
   {
     "typeOfTask": "epic",
@@ -146,9 +127,16 @@
     "createdAt": "Wed Oct 01 2025",
     "status": "todo",
     "priority": "medium",
-    "deadline": "Fri Oct 17 2025",
-    "tasksInEpic": [11],
-    "progress": 20,
-    "summary": "Build admin dashboard with user management, analytics, and system configuration"
+    "deadline": "Fri Oct 17 2025"
+  },
+  {
+    "typeOfTask": "task",
+    "id": 15,
+    "title": "New Task",
+    "description": "Test description",
+    "createdAt": "Sun Oct 19 2025",
+    "status": "todo",
+    "priority": "high",
+    "deadline": "Fri Oct 24 2025"
   }
 ]
