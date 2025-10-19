@@ -26,7 +26,7 @@ export class Task implements TaskDefault{
     }
 
     getTaskInfo(){
-        console.log(` taskID: ${this.id}\n TITLE: ${this.title}\n DESCRIPTION: ${this.description}\n CREATED AT: ${this.createdAt}\n
+        console.log(` taskID: ${this.id}\n TITLE: ${this.title}\n DESCRIPTION: ${this.description}\n CREATED AT: ${this.createdAt}
             STATUS: ${this.status}\n PRIORITY: ${this.priority}\n DEADLINE: ${this.deadline}`)
     }
 

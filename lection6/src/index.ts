@@ -7,13 +7,25 @@ const testTask: Partial<TaskDefault> =  {
     typeOfTask: 'task',
     description: 'Test description'
 }
-const allTasks = taskService.showTasks()
 
 taskService.loadTasksFromJSON()
-taskService.isTaskExist(13)
-//taskService.isTaskExist(22)
-taskService.isTaskExist(14)
-taskService.addTask(testTask)
-taskService.isTaskExist(14)
-//console.log(allTasks)
+// console.log(taskService.showTasks())
+// console.log(allTasks)
 
+// taskService.isTaskExist(13)
+// taskService.isTaskExist(22)
+
+// taskService.isTaskExist(14)
+// taskService.addTask(testTask)
+// taskService.isTaskExist(14)
+
+// taskService.removeTask(1)
+// taskService.isTaskExist(1)
+
+// taskService.filterTasksByStatus('done')
+// taskService.filterTasksByPriority('low')
+// taskService.filterTaskByDate()
+// taskService.filterTasksByTaskType('epic')
+// taskService.checkDeadlineDate()
+// taskService.isTaskExist(2)
+// taskService.updateTask(2, {status: 'done'})

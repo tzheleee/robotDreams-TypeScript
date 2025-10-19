@@ -5,7 +5,8 @@ import tasks from '../tasks.json'
 import {z} from 'zod'
 import {DEF_CREATED_AT, DEF_DEADLINE, DEF_DESCRIPTION, DEF_PRIORITY, DEF_STATUS, deadlineDate} from './constants'
 import { Status,Priority, Task } from './types'
-const prompt = require("prompt-sync")();
+import promptSync from 'prompt-sync';
+const prompt = promptSync();
 
 const tasksValidation = z.object({
     id: z.number(),
@@ -49,11 +50,11 @@ function createNewTask(taskData: Partial<Task> = {}){                           
 function removeTask(taskId: string | number){
     const index = result.findIndex(i => i.id === taskId)
     if (index === -1){
-        console.log(`Task with Id ${index} not found`)
+        console.log(`Task with Id ${taskId} not found`)
     }else{
         const deleted = result.splice(index, 1)[0]  
     }  
-    console.log(`Task with Id ${index} deleted succesfull`)
+    console.log(`Task with Id ${taskId} deleted succesfull`)
 }
 
 function filterTasksByStatus(status: Status){
@@ -70,10 +71,10 @@ function filterTaskByDate(){
     if (!input || isNaN(filterDate.getTime())){
         console.log("Incorrect Input!")
     }
-    const targetDate = filterDate.toDateString();
+    const targetDate = filterDate
 
     const filtered = result.filter(task => {
-        const taskDate = new Date(task.createdAt).toDateString();
+        const taskDate = new Date(task.createdAt);
         return taskDate === targetDate;
     });
 
@@ -94,9 +95,16 @@ function checkDeadlineDate(){
     return filteredDeadline
 }
 
-// function updateTask(){
-
-// }
+function  updateTask(taskId: number, updatedFields: Partial<Task>){
+    const taskToUpdate = result.find(task => task.id === taskId)
+    if(!taskToUpdate){
+        console.log(`Task for updating (TaskId${taskId}) haven't found!`)
+    } else{
+        Object.assign(taskToUpdate, updatedFields)
+        console.log(`Task ${taskId} was succesfully updated!`)
+        console.log(taskToUpdate)
+    }
+}
 
 // getTaskDetails(1)
 // console.log(createNewTask({}))
@@ -109,6 +117,8 @@ function checkDeadlineDate(){
 // console.log('Filter Priority LOW :', filterTasksByPriority('low'))
 //filterTaskByDate()
 //checkDeadlineDate()
+getTaskDetails(2)
+updateTask(2, {status: 'done'})
 
 
 
