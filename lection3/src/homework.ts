@@ -18,7 +18,7 @@ const tasksValidation = z.object({
     deadline: z.union([z.string(), z.date()]).optional().default(DEF_DEADLINE)
 })
 
-let validatedArray = z.array(tasksValidation)
+const validatedArray = z.array(tasksValidation)
 //type zodMovie = z.infer<typeof tasksValidation>
 let result = validatedArray.safeParse(tasks).data ?? []
 //console.log(result)
