@@ -19,7 +19,7 @@ taskService.loadTasksFromJSON()
 // taskService.addTask(testTask)
 // taskService.isTaskExist(14)
 
-taskService.removeTask(14)
+// taskService.removeTask(14)
 // taskService.isTaskExist(1)
 
 // taskService.filterTasksByStatus('done')
@@ -31,5 +31,5 @@ taskService.removeTask(14)
 // taskService.updateTask(2, {status: 'done'})
 
 // taskService.addTask(testTask)
-taskService.saveTasksToJSON()
+// taskService.saveTasksToJSON()
 

@@ -35,25 +35,6 @@ export class TaskService{
             return result.data as TaskDefault
         }
     }
-
-    // private validationArray(data: any[]): TaskDefault[] {
-    //     const taskSchema = z.object({
-    //         typeOfTask: z.string(),
-    //         id: z.number(),
-    //         title: z.string().default(DEF_TITLE),
-    //         description: z.string().optional().default(DEF_DESCRIPTION),
-    //         createdAt: z.string().optional().default(DEF_CREATED_AT),
-    //         status: z.string().optional().default(DEF_STATUS),
-    //         priority: z.string().optional().default(DEF_PRIORITY),
-    //         deadline: z.union([z.string(), z.date()]).optional().default(DEF_DEADLINE)
-    //     })
-        
-    //     const result = z.array(taskSchema).safeParse(data)  
-    //     if (!result.success) {
-    //         throw new Error(result.error.message)
-    //     }
-    //     return result.data as TaskDefault[]
-    // }
     
     public loadTasksFromJSON(): void {
         const filePath = path.join(__dirname, '../../../tasks.json');
