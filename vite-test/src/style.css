@@ -19,7 +19,16 @@ body {
   text-align: center;
 }
 
-.card {
+.taskManager {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.modal{
   padding: 2em;
   display: flex;
   flex-direction: column;

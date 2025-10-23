@@ -72,3 +72,4 @@ export {
     updateTask,
     deleteTask
 }
+export type { Status, Priority, TaskType, TaskDefault } from './types';
