@@ -7,11 +7,12 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
     <h1> Task Manager </h1>
     <div class="taskManager">
-      <input type="number" id="taskIdInput" placeholder="Enter task ID">
       <button id="findTaskBtn" type="button"> Find task by ID </button>
+      <input type="number" id="taskIdInput" style="display: none" placeholder="Enter task ID">
       <button id="openModalBtn" type="button" >Create Task</button>
       <button id="loadTaskBtn" type="button"> Load all tasks </button>
       <button id="deleteTaskBtn" type="button"> Delete task </button>
+      <input type="number" id="deleteTaskIdInput" style="display: none" placeholder="Enter task ID">
     </div>
 
     <div id="tasksContainer">
@@ -46,13 +47,16 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `
 
 const loadTasksBtn = document.getElementById('loadTaskBtn') as HTMLButtonElement
+const tasksContainer = document.getElementById('tasksContainer') as HTMLDivElement
 const findTasksByIdBtn = document.getElementById('findTaskBtn') as HTMLButtonElement
 const taskIdInput = document.getElementById('taskIdInput') as HTMLInputElement;
-const tasksContainer = document.getElementById('tasksContainer') as HTMLDivElement
 const openCreateFormBtm = document.getElementById('openModalBtn') as HTMLButtonElement
 const closeCreateFormBtm = document.getElementById('closeModalBtn') as HTMLButtonElement
 const taskModal = document.getElementById('taskModal') as HTMLDivElement
 const createTaskForm = document.getElementById('createTaskForm') as HTMLFormElement
+const deleteTaskBtn = document.getElementById('deleteTaskBtn') as HTMLButtonElement
+const deleteTaskIdInput = document.getElementById('deleteTaskIdInput') as HTMLInputElement;
+
 
 loadTasksBtn.addEventListener('click', () =>
   API.getAllTasks()
@@ -61,21 +65,30 @@ loadTasksBtn.addEventListener('click', () =>
 )
 
 findTasksByIdBtn.addEventListener('click', () => {
-  const taskId = parseInt(taskIdInput.value)
-  if (!taskId){
-    alert('Invalid TaskId!')
-      return
-  }
-  API.getTaskById(taskId)
-    .then(task => {
-      if (task){
-        displayTasks([task])
-      } else {
-        tasksContainer.innerHTML = `<p>Task with ID ${taskId} not found!</p>`
-      }
-    })
-    .catch(handleError)
+  taskIdInput.style.display = 'block'
+  taskIdInput.focus()
 })
+
+taskIdInput.addEventListener('keypress', (event) =>{
+  if(event.key === 'Enter'){
+    const taskId = parseInt(taskIdInput.value)
+    if (!taskId){
+      alert('Invalid TaskId!')
+        return
+    }
+    API.getTaskById(taskId)
+      .then(task => {
+        if (task){
+          displayTasks([task])
+        } else {
+          tasksContainer.innerHTML = `<p>Task with ID ${taskId} not found!</p>`
+        }
+        taskIdInput.style.display = 'none'
+        })
+      .catch(handleError)
+    }
+  }
+)
 
 openCreateFormBtm.addEventListener('click', hideButtons)
 closeCreateFormBtm.addEventListener('click', showButtons)
@@ -108,6 +121,30 @@ createTaskForm.addEventListener('submit', async(event) => {
   }
 })
 
+deleteTaskBtn.addEventListener('click',() => {
+  deleteTaskIdInput.style.display = 'block'
+  deleteTaskIdInput.focus()
+})
+
+deleteTaskIdInput.addEventListener('keypress', async (event) => {
+  if (event.key === 'Enter'){
+    const taskId = parseInt(deleteTaskIdInput.value)
+    if (!taskId){
+      alert('Invalid TaskId!')
+        return
+    }
+    try{
+      await API.deleteTask(taskId)
+      console.log(`Task ${taskId} deleted successfully!`)
+      deleteTaskIdInput.style.display = 'none'
+      deleteTaskIdInput.value = ''
+    }
+    catch(error) {
+      console.error('Error deleting task:', error)
+      alert('Error deleting task!')
+     }
+   }
+})
 
 function displayTasks(tasks: any[]) {
   tasksContainer.innerHTML = `

@@ -35,13 +35,20 @@ async function getTaskById(id: number): Promise<TaskDefault> {
 }
 
 async function createTask(taskData : Partial<TaskDefault>): Promise<TaskDefault> {
+    const tasksCount = await getAllTasks()
+    const newId = tasksCount.length + 1
+
+    const taskWithId = {
+        ...taskData,
+        id: newId  
+    }
+
     const response = await fetch(API_URL, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(taskData)
-    });
+        headers: {'Content-Type': 'application/json',},
+        body: JSON.stringify(taskWithId)
+    })
+
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -53,7 +60,7 @@ async function createTask(taskData : Partial<TaskDefault>): Promise<TaskDefault>
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(taskData)
-    });
+    })
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -61,7 +68,15 @@ async function createTask(taskData : Partial<TaskDefault>): Promise<TaskDefault>
 }
 
 async function deleteTask(id: number): Promise<void> {
-    await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+    console.log(`Deleting task with ID: ${id}`)
+
+    const response = await fetch(`${API_URL}/${id}`, { 
+        method: 'DELETE' 
+    })
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    console.log(`Task ${id} deleted successfully`);
 }
 
 

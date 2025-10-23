@@ -141,75 +141,21 @@
       "deadline": "Fri Oct 24 2025"
     },
     {
-      "id": "18a5",
-      "title": "22",
-      "description": "",
-      "status": "in_progress",
-      "priority": "high",
-      "deadline": "2025-10-30",
-      "typeOfTask": "task"
-    },
-    {
-      "id": "d9ed",
-      "title": "qqq",
-      "description": "www",
-      "status": "toDo",
-      "priority": "high",
-      "deadline": "2025-10-30",
-      "typeOfTask": "task"
-    },
-    {
-      "id": "8497",
-      "title": "рр",
-      "description": "",
-      "status": "toDo",
-      "priority": "medium",
-      "deadline": "2025-10-26",
-      "typeOfTask": "task"
-    },
-    {
-      "id": "6d8c",
-      "title": "ввыа",
-      "description": "",
-      "status": "toDo",
-      "priority": "low",
-      "deadline": "2025-10-24",
-      "typeOfTask": "task"
-    },
-    {
-      "id": "060c",
-      "title": "gh",
-      "description": "",
+      "id": 16,
+      "title": "test ID",
+      "description": "if ID shows correct",
       "status": "toDo",
       "priority": "low",
       "deadline": "2025-10-25",
       "typeOfTask": "task"
     },
     {
-      "id": "0beb",
-      "title": "g",
+      "id": 17,
+      "title": "test event in event",
       "description": "",
       "status": "toDo",
       "priority": "low",
-      "deadline": "2025-10-24",
-      "typeOfTask": "task"
-    },
-    {
-      "id": "41c6",
-      "title": "l",
-      "description": "",
-      "status": "toDo",
-      "priority": "low",
-      "deadline": "2025-10-25",
-      "typeOfTask": "task"
-    },
-    {
-      "id": "cbdd",
-      "title": "g",
-      "description": "",
-      "status": "toDo",
-      "priority": "low",
-      "deadline": "2025-10-25",
+      "deadline": "",
       "typeOfTask": "task"
     }
   ]
