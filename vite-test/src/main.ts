@@ -1,8 +1,8 @@
 import './style.css'
 import * as API from './api'
-import { Status, Priority, TaskType } from './api';
-import { DEF_DESCRIPTION, DEF_PRIORITY, DEF_STATUS, DEF_TITLE } from './constants';
-
+import { Status, Priority, TaskType } from './api'
+import { DEF_DESCRIPTION, DEF_PRIORITY, DEF_STATUS, DEF_TITLE } from './constants'
+import { validateFormData } from './validation'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -129,18 +129,10 @@ closeCreateFormBtm.addEventListener('click', showButtons)
 createTaskForm.addEventListener('submit', async(event) => {
   event.preventDefault()
 
-  const formData = new FormData(createTaskForm)
-  const taskData = {
-    title: formData.get('title') as string,
-    description: formData.get('description') as string,
-    status: formData.get('status') as API.Status,
-    priority: formData.get('priority') as API.Priority,
-    deadline: formData.get('deadline') as string,
-    typeOfTask: 'task' as API.TaskType
-  }
-  console.log('Form submitted with data:', taskData)
-
   try{
+    const taskData = validateFormData(new FormData(createTaskForm))
+    console.log('Form submitted with data:', taskData)
+
     await API.createTask(taskData)
     taskModal.style.display = 'none'
     createTaskForm.reset()
