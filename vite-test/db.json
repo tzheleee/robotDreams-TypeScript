@@ -131,31 +131,12 @@
       "deadline": "Fri Oct 17 2025"
     },
     {
-      "typeOfTask": "task",
-      "id": "15",
-      "title": "New Task",
-      "description": "Test description",
-      "createdAt": "Sun Oct 19 2025",
-      "status": "todo",
-      "priority": "high",
-      "deadline": "Fri Oct 24 2025"
-    },
-    {
-      "id": 16,
+      "id": "16",
       "title": "test ID",
       "description": "if ID shows correct",
       "status": "toDo",
       "priority": "low",
       "deadline": "2025-10-25",
-      "typeOfTask": "task"
-    },
-    {
-      "id": 17,
-      "title": "test event in event",
-      "description": "",
-      "status": "toDo",
-      "priority": "low",
-      "deadline": "",
       "typeOfTask": "task"
     }
   ]

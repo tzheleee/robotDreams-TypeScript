@@ -36,8 +36,8 @@ async function getTaskById(id: number): Promise<TaskDefault> {
 
 async function createTask(taskData : Partial<TaskDefault>): Promise<TaskDefault> {
     const tasksCount = await getAllTasks()
-    const newId = tasksCount.length + 1
-
+    const maxId = tasksCount.length > 0 ? Math.max(...tasksCount.map(task => task.id)) : 0;
+    const newId = maxId + 1;
     const taskWithId = {
         ...taskData,
         id: newId  
@@ -70,11 +70,11 @@ async function createTask(taskData : Partial<TaskDefault>): Promise<TaskDefault>
 async function deleteTask(id: number): Promise<void> {
     console.log(`Deleting task with ID: ${id}`)
 
-    const response = await fetch(`${API_URL}/${id}`, { 
+    const response = await fetch(`${API_URL}/${id.toString()}`, { 
         method: 'DELETE' 
     })
     if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`)
     }
     console.log(`Task ${id} deleted successfully`);
 }
