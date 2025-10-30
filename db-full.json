@@ -1,0 +1,153 @@
+{
+  "tasks": [
+    {
+      "typeOfTask": "task",
+      "id": 1,
+      "title": "Develop database architecture",
+      "description": "Design database schema for users and tasks",
+      "createdAt": "Mon Sep 29 2025",
+      "status": "done",
+      "priority": "high",
+      "deadline": "Fri Oct 10 2025"
+    },
+    {
+      "typeOfTask": "task",
+      "id": 2,
+      "title": "Write API tests",
+      "description": "Create unit and integration tests for all endpoints",
+      "createdAt": "Tue Sep 30 2025",
+      "status": "in_progress",
+      "priority": "medium",
+      "deadline": "Mon Oct 13 2025"
+    },
+    {
+      "typeOfTask": "task",
+      "id": 3,
+      "title": "Test authentication module",
+      "description": "Check login, registration, password recovery, and two-factor authentication",
+      "createdAt": "Tue Sep 30 2025",
+      "status": "in_progress",
+      "priority": "high",
+      "deadline": "Sun Oct 12 2025"
+    },
+    {
+      "typeOfTask": "task",
+      "id": 4,
+      "title": "Prepare September expense report",
+      "description": "Collect all financial data, create a table, and generate a PDF report",
+      "createdAt": "Wed Oct 01 2025",
+      "status": "todo",
+      "priority": "low",
+      "deadline": "Mon Oct 13 2025"
+    },
+    {
+      "typeOfTask": "task",
+      "id": 5,
+      "title": "Create user profile page",
+      "description": "Implement the frontend part of the profile with data editing capabilities",
+      "createdAt": "Thu Oct 02 2025",
+      "status": "in_progress",
+      "priority": "medium",
+      "deadline": "Fri Oct 03 2025"
+    },
+    {
+      "typeOfTask": "subtask",
+      "id": 6,
+      "title": "Design login form UI",
+      "description": "Create responsive login form design",
+      "createdAt": "Thu Oct 02 2025",
+      "status": "done",
+      "priority": "medium",
+      "deadline": "Mon Oct 06 2025"
+    },
+    {
+      "typeOfTask": "subtask",
+      "id": 7,
+      "title": "Add password strength meter",
+      "description": "Implement password validation visual feedback",
+      "createdAt": "Fri Oct 03 2025",
+      "status": "in_progress",
+      "priority": "low",
+      "deadline": "Wed Oct 08 2025"
+    },
+    {
+      "typeOfTask": "bug",
+      "id": 8,
+      "title": "Login button not working on mobile",
+      "description": "Login button fails to respond on iOS Safari",
+      "createdAt": "Wed Oct 01 2025",
+      "status": "todo",
+      "priority": "high",
+      "deadline": "Fri Oct 03 2025"
+    },
+    {
+      "typeOfTask": "bug",
+      "id": 9,
+      "title": "Memory leak in dashboard",
+      "description": "Dashboard component not cleaning up event listeners",
+      "createdAt": "Thu Oct 02 2025",
+      "status": "in_progress",
+      "priority": "major",
+      "deadline": "Tue Oct 07 2025"
+    },
+    {
+      "typeOfTask": "story",
+      "id": 10,
+      "title": "User password reset functionality",
+      "description": "Allow users to reset forgotten passwords",
+      "createdAt": "Mon Sep 29 2025",
+      "status": "done",
+      "priority": "high",
+      "deadline": "Fri Oct 03 2025"
+    },
+    {
+      "typeOfTask": "story",
+      "id": 11,
+      "title": "Admin user management dashboard",
+      "description": "Create admin interface for user management",
+      "createdAt": "Tue Sep 30 2025",
+      "status": "in_progress",
+      "priority": "medium",
+      "deadline": "Mon Oct 13 2025"
+    },
+    {
+      "typeOfTask": "epic",
+      "id": 12,
+      "title": "User authentication system",
+      "description": "Complete authentication and authorization system",
+      "createdAt": "Mon Sep 29 2025",
+      "status": "in_progress",
+      "priority": "high",
+      "deadline": "Mon Oct 13 2025"
+    },
+    {
+      "typeOfTask": "epic",
+      "id": 13,
+      "title": "Admin panel development",
+      "description": "Create comprehensive admin interface",
+      "createdAt": "Wed Oct 01 2025",
+      "status": "todo",
+      "priority": "medium",
+      "deadline": "Fri Oct 17 2025"
+    },
+    {
+      "id": 16,
+      "title": "test ID",
+      "description": "if ID shows correct",
+      "status": "toDo",
+      "priority": "low",
+      "deadline": "2025-10-25",
+      "typeOfTask": "task"
+    },
+    {
+      "id": 17,
+      "title": "test1",
+      "description": "test1",
+      "status": "todo",
+      "priority": "low",
+      "deadline": "2025-10-31",
+      "typeOfTask": "task",
+      "createdAt": "2025-10-30T12:10:07.065Z"
+    }
+  ]
+}

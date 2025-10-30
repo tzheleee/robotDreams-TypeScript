@@ -1,0 +1,30 @@
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container input:invalid,
+.form-container select:invalid {
+  border-color: red;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
